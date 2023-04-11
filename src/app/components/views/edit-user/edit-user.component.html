@@ -29,7 +29,7 @@
                 </div>
                 <div class="form__field">
                     <label class="field__label" htmlFor="photo">Foto</label>
-                    <p-fileUpload class="field__input" mode="basic" chooseLabel="Buscar" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [auto]="true" (onUpload)="onPhotoUpload($event)"></p-fileUpload>
+                    <p-fileUpload class="field__input" mode="basic" chooseLabel="Buscar" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/bmp" [auto]="true" (onUpload)="onPhotoUpload($event)"></p-fileUpload>
                     <small *ngIf="user.photo">{{user.photo.name}}</small>
 
                 </div>

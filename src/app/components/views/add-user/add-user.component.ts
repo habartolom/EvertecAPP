@@ -44,7 +44,6 @@ export class AddUserComponent {
                 this.showNotification = true;
             }
             else{
-                console.log('Entra')
                 this.notificationMessage = 'Verifique que todos los campos estén diligenciados'
                 this.showNotification = true;
             }
