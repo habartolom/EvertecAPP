@@ -1,0 +1,55 @@
+<div class="add-user">
+    <div class="add-user__container">
+        <h1 class="add-user__title">Agregar usuario</h1>
+        <div class="add-user__form">
+            <div class="form__group">
+                <div class="form__field">
+                    <label class="field__label" htmlFor="name">Nombre</label>
+                    <input class="field__input" pInputText id="name" [(ngModel)]="user.name" />
+                </div>
+
+                <div class="form__field">
+                    <label class="field__label" htmlFor="lastname">Apellido</label>
+                    <input class="field__input" pInputText id="lastname" [(ngModel)]="user.lastName" />
+                </div>
+
+                <div class="form__field">
+                    <label class="field__label" htmlFor="birthdate">Fecha de Nacimiento</label>
+                    <p-calendar class="field__input" [(ngModel)]="user.birthdate" [showIcon]="true"></p-calendar>
+                </div>
+            </div>
+            <div class="form__group">
+                <div class="form__field">
+                    <label class="field__label" htmlFor="civilStatus">Estado civil</label>
+                    <p-dropdown class="field__input" [options]="civilStatuses" optionLabel="description" [(ngModel)]="user.civilStatus" placeholder="Seleccione un estado civil" [editable]="false">
+                    </p-dropdown>
+                </div>
+                <div class="form__field">
+                    <label class="field__label" htmlFor="photo">Foto</label>
+                    <p-fileUpload class="field__input" mode="basic" chooseLabel="Buscar" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [auto]="true" (onUpload)="onPhotoUpload($event)"></p-fileUpload>
+                    <small *ngIf="uploadedFile">{{uploadedFile.name}}</small>
+
+                </div>
+                <div class="form__field">
+                    <label class="field__label" htmlFor="silbings">Tiene hermanos</label>
+                    <p-toggleButton [(ngModel)]="user.hasSilbings" onLabel="Si" offLabel="No"></p-toggleButton>
+                </div>
+            </div>
+        </div>
+        <div class="add-user__button-container">
+            <p-button class="add-user__button" label="Volver" styleClass="p-button-secondary" (click)="goBack()"></p-button>
+            <p-button class="add-user__button" label="Agregar" icon="pi pi-check" iconPos="right" (click)="addUser()"></p-button>
+        </div>
+    </div>
+</div>
+
+
+<p-dialog header="Header" [(visible)]="showNotification" [style]="{ width: '20vw' }">
+    <ng-template pTemplate="header">
+        <span class="text-xl font-bold">Notificación</span>
+    </ng-template>
+    <p> {{notificationMessage}} </p>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="showNotification = false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
